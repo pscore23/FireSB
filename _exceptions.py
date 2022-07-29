@@ -1,2 +1,2 @@
 class JSONNotFoundError(Exception):
-	pass
+    pass

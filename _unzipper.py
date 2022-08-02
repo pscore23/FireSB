@@ -1,12 +1,13 @@
 import json
 import zipfile
+from typing import IO
 
 import _exceptions as _except
 
 
 class SB3:
     @staticmethod
-    def open(file_name):
+    def open(file_name: str) -> tuple[str, tuple[IO[bytes], ...]]:
         need = "project.json"
 
         try:

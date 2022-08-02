@@ -17,7 +17,8 @@ class SB3:
                     raise _except.JSONNotFoundError("'.sb3' file must contain 'project.json' file")
 
                 json_file = json.dumps(json.loads(
-                    zf.read(need).decode("utf-8")), ensure_ascii=False, indent=4, sort_keys=False, separators=(',', ': '))
+                    zf.read(need).decode("utf-8")
+                ), ensure_ascii=False, indent=4, sort_keys=False, separators=(',', ': '))
                 actual_names = (item for item in names if (
                     item.count(".") == 1 and
                     len(item.split(".")[0]) == 32 and

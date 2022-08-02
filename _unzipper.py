@@ -5,8 +5,8 @@ import _exceptions as _except
 
 
 class SB3:
-    @classmethod
-    def open(cls, file_name):
+    @staticmethod
+    def open(file_name):
         need = "project.json"
 
         try:

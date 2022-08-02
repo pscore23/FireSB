@@ -19,7 +19,8 @@ class MainWindow:
     def _update(self) -> None:
         self.root.update_idletasks()
 
-    def _run(self) -> None:
+    def run(self) -> None:
+        self._update()
         self.root.mainloop()
 
     def _close(self) -> None:

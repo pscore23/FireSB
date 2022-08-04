@@ -7,11 +7,11 @@ import _exceptions as _except
 
 class SB3:
     @staticmethod
-    def open(file_name: str) -> tuple[str, tuple[IO[bytes], ...]]:
+    def open(file_path: str) -> tuple[str, tuple[IO[bytes], ...]]:
         need = "project.json"
 
         try:
-            with zipfile.ZipFile(file_name) as zf:
+            with zipfile.ZipFile(file_path) as zf:
                 names = zf.namelist()
 
                 if need not in names:

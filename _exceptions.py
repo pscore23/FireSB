@@ -1,9 +1,6 @@
-import zipfile
-
-
-class JSONNotFoundError(FileNotFoundError):
+class JSONNotFoundError(Exception):
     pass
 
 
-class NotSB3Error(zipfile.BadZipfile):
+class NotSB3Error(Exception):
     pass

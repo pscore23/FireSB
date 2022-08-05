@@ -11,7 +11,7 @@ class MainWindow(tk.Frame):
         self.label, self.button = None, None
 
         self.file_name = tk.StringVar()
-        self.file_name.set("未選択")
+        self.file_name.set("解析したい .sb3 ファイルの絶対パス:\r\n未選択")
 
         sw, sh = self.root.winfo_screenwidth(), self.root.winfo_screenheight()
         w, h = width, height
@@ -20,10 +20,10 @@ class MainWindow(tk.Frame):
         self.root.geometry(f"{w}x{h}+{int(sw/2-w/2)}+{int(sh/2-h/2)}")
 
         self.frame = tk.Frame(self.root)
-        self.frame.pack()
+        self.frame.pack(expand=1, fill=tk.BOTH)
 
-        self.set_button("参照...", 0, 40, self.open_file)
-        self.set_label(0, 0, self.file_name)
+        self.set_button("エクスプローラーを参照...", 10, 50, self.open_file)
+        self.set_label(150, 40, self.file_name)
 
         self.run()
 
@@ -45,11 +45,11 @@ class MainWindow(tk.Frame):
         if not len(file_name) == 0:
             self.file_name.set(f"解析したい .sb3 ファイルの絶対パス:\r\n{file_name}")
 
-    def set_label(self, pad_x: int, pad_y: int, text_var) -> None:
+    def set_label(self, pos_x: float, pos_y: float, text_var) -> None:
         self.label = ttk.Label(self.frame, textvariable=text_var)
-        self.label.pack(padx=pad_x, pady=pad_y)
+        self.label.place(x=pos_x, y=pos_y)
 
-    def set_button(self, text: str, pad_x: int, pad_y: int, handler) -> None:
+    def set_button(self, text: str, pos_x: float, pos_y: float, handler) -> None:
         self.button = ttk.Button(self.frame, text=text)
         self.button.bind("<ButtonPress>", handler)
-        self.button.pack(padx=pad_x, pady=pad_y)
+        self.button.place(x=pos_x, y=pos_y)

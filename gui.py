@@ -8,10 +8,10 @@ class MainWindow(tk.Frame):
         self.root = tk.Tk()
         super().__init__(self.root)
 
-        self.label, self.button = None, None
+        self.label, self.button, self.file_name = None, None, None
 
-        self.file_name = tk.StringVar()
-        self.file_name.set("解析したい .sb3 ファイルの絶対パス:\r\n未選択")
+        self.file_name_var = tk.StringVar()
+        self.file_name_var.set("解析したい .sb3 ファイルの絶対パス:\r\n未選択")
 
         sw, sh = self.root.winfo_screenwidth(), self.root.winfo_screenheight()
         w, h = width, height
@@ -23,7 +23,7 @@ class MainWindow(tk.Frame):
         self.frame.pack(expand=1, fill=tk.BOTH)
 
         self.set_button("エクスプローラーを参照...", 10, 50, self.open_file)
-        self.set_label(150, 40, self.file_name)
+        self.set_label(150, 40, self.file_name_var)
 
         self.run()
 
@@ -40,10 +40,10 @@ class MainWindow(tk.Frame):
     def open_file(self, event) -> None:
         f_type = [("Scratch プロジェクトファイル", "*.sb3")]
         i_dir = os.path.abspath(os.path.dirname(__file__))
-        file_name = filedialog.askopenfilename(filetypes=f_type, initialdir=i_dir)
+        self.file_name = filedialog.askopenfilename(filetypes=f_type, initialdir=i_dir)
 
-        if not len(file_name) == 0:
-            self.file_name.set(f"解析したい .sb3 ファイルの絶対パス:\r\n{file_name}")
+        if not len(self.file_name) == 0:
+            self.file_name_var.set(f"解析したい .sb3 ファイルの絶対パス:\r\n{self.file_name}")
 
     def set_label(self, pos_x: float, pos_y: float, text_var) -> None:
         self.label = ttk.Label(self.frame, textvariable=text_var)

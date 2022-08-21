@@ -15,7 +15,7 @@ class SB3:
                 names = zf.namelist()
 
                 if need not in names:
-                    raise _except.JSONNotFoundError("'.sb3' file must contain 'project.json' file")
+                    raise _except.JSONNotFoundError("\".sb3\" file must contain \"project.json\" file")
 
                 project = json.dumps(json.loads(
                     zf.read(need).decode("utf-8")
@@ -30,4 +30,4 @@ class SB3:
             return project, files
 
         except zipfile.BadZipFile:
-            raise _except.NotSB3Error("File with extension '.sb3' is not specified.")
+            raise _except.NotSB3Error("File with extension \".sb3\" is not specified.")

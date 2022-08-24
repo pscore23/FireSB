@@ -8,7 +8,7 @@ class MainWindow(tk.Frame):
         self.root = tk.Tk()
         super().__init__(self.root)
 
-        self.label, self.button, self.file_name = None, None, None
+        self.label, self.button, self.file_name, self.flag = None, None, "", 0
 
         self.file_name_var = tk.StringVar()
         self.file_name_var.set("解析したい .sb3 ファイルの絶対パス:\r\n未選択")
@@ -23,6 +23,8 @@ class MainWindow(tk.Frame):
         self.frame.pack(expand=1, fill=tk.BOTH)
 
         self.set_button("エクスプローラーを参照...", 10, 50, self.open_file)
+        self.set_button("解析する!", 30, 70, self.main_call)
+
         self.set_label(150, 40, self.file_name_var)
 
         self.run()
@@ -53,3 +55,6 @@ class MainWindow(tk.Frame):
         self.button = ttk.Button(self.frame, text=text)
         self.button.bind("<ButtonPress>", handler)
         self.button.place(x=pos_x, y=pos_y)
+
+    def main_call(self, event) -> None:
+        self.flag = 1

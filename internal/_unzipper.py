@@ -2,7 +2,7 @@ import json
 import zipfile
 from typing import IO
 
-import _exceptions as _except
+from internal import _exceptions as _except
 
 
 class SB3:

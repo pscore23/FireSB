@@ -4,7 +4,7 @@ import os
 import sys
 
 import PySide6
-from PySide6.QtWidgets import QWidget, QApplication, QPushButton, QTextEdit
+from PySide6.QtWidgets import QWidget, QPushButton, QTextEdit, QApplication
 
 
 class MainWindow(QWidget):

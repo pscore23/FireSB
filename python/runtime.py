@@ -29,7 +29,7 @@ class MainWindow(QWidget):
     def set_label(self, x_pos: int, y_pos: int) -> None:
         self.label = QLabel(self)
 
-        self.label.setStyleSheet(style_sheets.label_style)
+        self.label.setStyleSheet(style_sheets.LABEL_STYLE)
         self.label.setText("入力待ちです...")
         self.label.move(x_pos, y_pos)
         self.label.resize(250, 25)
@@ -37,7 +37,7 @@ class MainWindow(QWidget):
     def set_button(self, x_pos: int, y_pos: int) -> None:
         self.button = QPushButton(self)
 
-        self.button.setStyleSheet(style_sheets.button_style)
+        self.button.setStyleSheet(style_sheets.BUTTON_STYLE)
         self.button.setText("解析する!")
         self.button.move(x_pos, y_pos)
         self.button.resize(75, 25)
@@ -46,7 +46,7 @@ class MainWindow(QWidget):
     def set_text_edit(self, x_pos: int, y_pos: int) -> None:
         self.text_edit = QTextEdit(self)
 
-        self.text_edit.setStyleSheet(style_sheets.text_edit_style)
+        self.text_edit.setStyleSheet(style_sheets.TEXT_EDIT_STYLE)
         self.text_edit.move(x_pos, y_pos)
         self.text_edit.resize(150, 25)
 

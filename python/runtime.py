@@ -11,7 +11,7 @@ from internal.static.assets import style_sheets
 
 
 class MainWindow(QWidget):
-    def __init__(self, parent=None):
+    def __init__(self, parent=None) -> None:
         os.environ["QT_QPA_PLATFORM_PLUGIN_PATH"] = \
             os.path.join(os.path.dirname(PySide6.__file__), "plugins", "platforms")
 
@@ -26,7 +26,7 @@ class MainWindow(QWidget):
         self.set_button(320, 50)
         self.set_text_edit(150, 50)
 
-    def set_label(self, x_pos, y_pos):
+    def set_label(self, x_pos: int, y_pos: int) -> None:
         self.label = QLabel(self)
 
         self.label.setStyleSheet(style_sheets.label_style)
@@ -34,7 +34,7 @@ class MainWindow(QWidget):
         self.label.move(x_pos, y_pos)
         self.label.resize(250, 25)
 
-    def set_button(self, x_pos, y_pos):
+    def set_button(self, x_pos: int, y_pos: int) -> None:
         self.button = QPushButton(self)
 
         self.button.setStyleSheet(style_sheets.button_style)
@@ -43,14 +43,14 @@ class MainWindow(QWidget):
         self.button.resize(75, 25)
         self.button.clicked.connect(self.analyze)
 
-    def set_text_edit(self, x_pos, y_pos):
+    def set_text_edit(self, x_pos: int, y_pos: int) -> None:
         self.text_edit = QTextEdit(self)
 
         self.text_edit.setStyleSheet(style_sheets.text_edit_style)
         self.text_edit.move(x_pos, y_pos)
         self.text_edit.resize(150, 25)
 
-    def analyze(self):
+    def analyze(self) -> None:
         self.button.setEnabled(False)
 
         p_id = \

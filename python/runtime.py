@@ -63,8 +63,6 @@ class MainWindow(QWidget):
         else:
             self.label.setText("データの取得が完了しました!")
 
-        print(data)
-
 
 app = QApplication(sys.argv)
 window = MainWindow()

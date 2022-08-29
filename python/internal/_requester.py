@@ -4,8 +4,8 @@ from urllib import request, error
 
 class Require:
     @staticmethod
-    def get_project_data(p_id) -> Any:
-        if len(p_id) == 0:
+    def get_project_data(p_id: int) -> Any:
+        if p_id == "":
             return None
 
         else:

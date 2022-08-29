@@ -2,6 +2,7 @@
 
 import os
 import sys
+from typing import Any
 
 import PySide6
 from PySide6.QtWidgets import QWidget, QPushButton, QTextEdit, QLabel, QApplication
@@ -11,7 +12,7 @@ from internal.static.assets import style_sheets
 
 
 class MainWindow(QWidget):
-    def __init__(self, parent=None) -> None:
+    def __init__(self, parent: Any = None) -> None:
         os.environ["QT_QPA_PLATFORM_PLUGIN_PATH"] = \
             os.path.join(os.path.dirname(PySide6.__file__), "plugins", "platforms")
 

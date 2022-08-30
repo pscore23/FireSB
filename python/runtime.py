@@ -8,7 +8,7 @@ import PySide6
 from PySide6.QtWidgets import QWidget, QPushButton, QTextEdit, QLabel, QApplication
 
 from internal import _requester
-from internal.static.assets import style_sheets
+from internal.static.assets import _style_sheets
 
 
 class MainWindow(QWidget):
@@ -30,7 +30,7 @@ class MainWindow(QWidget):
     def set_label(self, x_pos: int, y_pos: int) -> None:
         self.label = QLabel(self)
 
-        self.label.setStyleSheet(style_sheets.LABEL_STYLE)
+        self.label.setStyleSheet(_style_sheets.LABEL_STYLE)
         self.label.setText("入力待ちです...")
         self.label.move(x_pos, y_pos)
         self.label.resize(250, 25)
@@ -38,7 +38,7 @@ class MainWindow(QWidget):
     def set_button(self, x_pos: int, y_pos: int) -> None:
         self.button = QPushButton(self)
 
-        self.button.setStyleSheet(style_sheets.BUTTON_STYLE)
+        self.button.setStyleSheet(_style_sheets.BUTTON_STYLE)
         self.button.setText("解析する!")
         self.button.move(x_pos, y_pos)
         self.button.resize(75, 25)
@@ -47,7 +47,7 @@ class MainWindow(QWidget):
     def set_text_edit(self, x_pos: int, y_pos: int) -> None:
         self.text_edit = QTextEdit(self)
 
-        self.text_edit.setStyleSheet(style_sheets.TEXT_EDIT_STYLE)
+        self.text_edit.setStyleSheet(_style_sheets.TEXT_EDIT_STYLE)
         self.text_edit.move(x_pos, y_pos)
         self.text_edit.resize(150, 25)
 

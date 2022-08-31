@@ -2,10 +2,13 @@
   <img src="https://user-images.githubusercontent.com/103930835/187671572-6d872f93-8228-41e2-abca-fed8b83bdbea.png" />
 </p>
 
-<p>
-  <font size="5">
-    FireSB - project.json Analyzer
-  </font>
+<style>
+  .title {
+    font-size: 32px;
+  }
+</style>
+<p class="title">
+  FireSB - project.json Analyzer
 </p>
 
 ### コード情報:

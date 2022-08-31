@@ -1,4 +1,6 @@
-# FireSB
+[![Logo](https://raw.githubusercontent.com/pscore23/FireSB/647008bbc45885dea0a6df0b85eff2fe93fd6700/docs/assets/logo.svg)](https://github.com/pscore23/FireSB)
+
+# FireSB - project.json Analyzer
 
 ---
 

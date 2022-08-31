@@ -1,4 +1,6 @@
-[![Logo](https://raw.githubusercontent.com/pscore23/FireSB/647008bbc45885dea0a6df0b85eff2fe93fd6700/docs/assets/logo.svg)](https://github.com/pscore23/FireSB)
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/103930835/187666083-2b50cdf4-66ec-4f7e-957d-94dc7931e64a.svg" />
+</p>
 
 # FireSB - project.json Analyzer
 

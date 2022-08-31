@@ -1,3 +1,6 @@
+# -*- coding: utf-8 -*-
+
+
 class GenericData:
     def __init__(self, *_, **data):
         self.__dict__.update(data)

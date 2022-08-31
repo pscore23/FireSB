@@ -2,7 +2,11 @@
   <img src="https://user-images.githubusercontent.com/103930835/187671572-6d872f93-8228-41e2-abca-fed8b83bdbea.png" />
 </p>
 
-# FireSB - project.json Analyzer
+<p>
+  <font size="5">
+    FireSB - project.json Analyzer
+  </font>
+</p>
 
 ### コード情報:
 

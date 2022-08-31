@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/103930835/187671348-c35dbb92-b9be-4b59-b1ea-a634be7113d3.png" />
+  <img src="https://user-images.githubusercontent.com/103930835/187671572-6d872f93-8228-41e2-abca-fed8b83bdbea.png" />
 </p>
 
 # FireSB - project.json Analyzer

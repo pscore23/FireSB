@@ -1,4 +1,4 @@
-<a href="https://pscore23.github.io/FireSB/">
+<a href="https://pscore23.github.io/FireSB/" target="_blank" rel="noopener noreferrer">
   <p align="center">
     <img src="https://user-images.githubusercontent.com/103930835/187671572-6d872f93-8228-41e2-abca-fed8b83bdbea.png" />
   </p>

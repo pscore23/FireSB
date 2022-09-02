@@ -19,3 +19,6 @@ class BlockBuilder(_generic.GenericData):
 
     def __repr__(self):
         return f"<BlockBuilder {self.id}>"
+
+    def __iter__(self):
+        return self

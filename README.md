@@ -4,8 +4,9 @@
   </p>
 </a>
 
-[![Total alerts](https://img.shields.io/lgtm/alerts/g/pscore23/SB3_Analyzer.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/pscore23/SB3_Analyzer/alerts/)　
-[![Language grade: Python](https://img.shields.io/lgtm/grade/python/g/pscore23/SB3_Analyzer.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/pscore23/SB3_Analyzer/context:python)　
-![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/pscore23/SB3_Analyzer)
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/54db4e2ad3ee4241b7e44a134e95a84b)](https://www.codacy.com/gh/pscore23/FireSB/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=pscore23/FireSB&amp;utm_campaign=Badge_Grade)
+![GitHub repo file count](https://img.shields.io/github/directory-file-count/pscore23/FireSB)
+![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/pscore23/FireSB)
+![GitHub commit activity](https://img.shields.io/github/commit-activity/w/pscore23/FireSB)
 
 # FireSB - project.json Analyzer

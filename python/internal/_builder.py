@@ -1,10 +1,11 @@
+from typing import Any
 import json
 
 from static import _generic
 
 block_definitation = _generic._define("block_definitation")
-_input = _generic._define("input")
-_field = _generic._define("field")
+_input: type = _generic._define("input")
+_field: type = _generic._define("field")
 
 
 class BlockBuilder(_generic.GenericData):
@@ -15,7 +16,7 @@ class BlockBuilder(_generic.GenericData):
     def __init__(self, **kwargs):
         super().__init__(kwargs)
 
-        self.iter_count = 0
+        self.iter_count: int = 0
 
     def __repr__(self):
         return f"<BlockBuilder {self.id}>"
@@ -39,5 +40,5 @@ class BlockBuilder(_generic.GenericData):
 
         return _self
 
-    def __eq__(self, other):
+    def __eq__(self, other: Any):
         return self.id == other.id

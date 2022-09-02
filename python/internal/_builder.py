@@ -16,3 +16,6 @@ class BlockBuilder(_generic.GenericData):
         super().__init__(kwargs)
 
         self.iter_count = 0
+
+    def __repr__(self):
+        return f"<BlockBuilder {self.id}>"

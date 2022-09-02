@@ -38,3 +38,6 @@ class BlockBuilder(_generic.GenericData):
         self.iter_count += 1
 
         return _self
+
+    def __eq__(self, other):
+        return self.id == other.id

@@ -22,3 +22,19 @@ class BlockBuilder(_generic.GenericData):
 
     def __iter__(self):
         return self
+
+    def __next__(self):
+        _self = self
+
+        for i in range(self.iter_count):
+            if getattr(_self, "next", None):
+                _self = _self.next
+
+            else:
+                self.iter_count += 1
+
+                raise StopIteration
+
+        self.iter_count += 1
+
+        return _self

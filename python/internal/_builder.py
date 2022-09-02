@@ -3,9 +3,11 @@ import json
 from static import _generic
 
 block_definitation = _generic._define("block_definitation")
+_input = _generic._define("input")
+_field = _generic._define("field")
 
 
-class BaseBuilder(_generic.GenericData):
+class BlockBuilder(_generic.GenericData):
     menu, block = None, None
     number = 0
     color, text, broadcast_id, broadcast_name = "", "", "", ""
@@ -13,4 +15,4 @@ class BaseBuilder(_generic.GenericData):
     def __init__(self, **kwargs):
         super().__init__(kwargs)
 
-        self.iter_num = 0
+        self.iter_count = 0

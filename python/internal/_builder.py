@@ -26,7 +26,7 @@ class BlockBuilder(_generic.GenericData):
     def __next__(self):
         _self = self
 
-        for i in range(self.iter_count):
+        for _ in range(self.iter_count):
             if getattr(_self, "next", None):
                 _self = _self.next
 

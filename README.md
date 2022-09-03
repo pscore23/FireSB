@@ -7,7 +7,6 @@
 # &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FireSB - project.json Analyzer
 
 ## Code info:
-
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/54db4e2ad3ee4241b7e44a134e95a84b)](https://www.codacy.com/gh/pscore23/FireSB/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=pscore23/FireSB&amp;utm_campaign=Badge_Grade)
 ![GitHub repo file count](https://img.shields.io/github/directory-file-count/pscore23/FireSB)
 ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/pscore23/FireSB)

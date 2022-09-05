@@ -4,8 +4,8 @@ import json
 from static import _generic
 
 block_def = _generic._define("block_def")
-_input: type = _generic._define("input")
-_field: type = _generic._define("field")
+input_: type = _generic._define("input")
+field_: type = _generic._define("field")
 
 
 class BlockBuilder(_generic.GenericData):
@@ -58,3 +58,7 @@ class BlockBuilder(_generic.GenericData):
                 arg_defaults=json.loads(self._mutation["argumentdefaults"]),
                 without_refresh=self._mutation.get("warp", False)
             )
+
+    @property
+    def selectables(self):
+        return self.inputs + self.fields

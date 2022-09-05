@@ -3,7 +3,7 @@ import json
 
 from static import _generic
 
-block_definitation = _generic._define("block_definitation")
+block_def = _generic._define("block_def")
 _input: type = _generic._define("input")
 _field: type = _generic._define("field")
 
@@ -16,7 +16,7 @@ class BlockBuilder(_generic.GenericData):
     def __init__(self, **kwargs):
         super().__init__(kwargs)
 
-        self.iter_count: int = 0
+        self._iter_count: int = 0
 
     def __repr__(self):
         return f"<BlockBuilder {self.id}>"
@@ -27,16 +27,16 @@ class BlockBuilder(_generic.GenericData):
     def __next__(self):
         self_ = self
 
-        for _ in range(self.iter_count):
+        for _ in range(self._iter_count):
             if getattr(self_, "next", None):
                 self_ = self_.next
 
             else:
-                self.iter_count += 1
+                self._iter_count += 1
 
                 raise StopIteration
 
-        self.iter_count += 1
+        self._iter_count += 1
 
         return self_
 
@@ -46,3 +46,15 @@ class BlockBuilder(_generic.GenericData):
     @property
     def isolated(self):
         return getattr(self, "first_block", False) and not getattr(self, "next", None)
+
+    @property
+    def proc_define(self):
+        if self._mutation:
+            return block_def(
+                name=self.id,
+                code=self._mutation["proccode"],
+                arg_ids=json.loads(self._mutation["argumentids"]),
+                arg_names=json.loads(self._mutation["argumentnames"]),
+                arg_defaults=json.loads(self._mutation["argumentdefaults"]),
+                without_refresh=self._mutation.get("warp", False)
+            )

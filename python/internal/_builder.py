@@ -25,11 +25,11 @@ class BlockBuilder(_generic.GenericData):
         return self
 
     def __next__(self):
-        _self = self
+        self_ = self
 
         for _ in range(self.iter_count):
-            if getattr(_self, "next", None):
-                _self = _self.next
+            if getattr(self_, "next", None):
+                self_ = self_.next
 
             else:
                 self.iter_count += 1
@@ -38,7 +38,11 @@ class BlockBuilder(_generic.GenericData):
 
         self.iter_count += 1
 
-        return _self
+        return self_
 
     def __eq__(self, other: Any):
         return self.id == other.id
+
+    @property
+    def isolated(self):
+        return getattr(self, "first_block", False) and not getattr(self, "next", None)

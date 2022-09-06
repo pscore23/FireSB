@@ -42,7 +42,7 @@ class MainWindow(QWidget):
         self.button.setText("解析する!")
         self.button.move(x_pos, y_pos)
         self.button.resize(75, 25)
-        self.button.clicked.connect(self.analyze)
+        self.button.clicked.connect(lambda: self.analyze(None))
 
     def set_text_edit(self, x_pos: int, y_pos: int) -> None:
         self.text_edit = QTextEdit(self)
@@ -51,8 +51,10 @@ class MainWindow(QWidget):
         self.text_edit.move(x_pos, y_pos)
         self.text_edit.resize(150, 25)
 
-    def analyze(self) -> None:
+    def analyze(self, status) -> None:
         self.button.setEnabled(False)
+
+        _status = status
 
         p_id = \
             self.text_edit.toPlainText().translate(str.maketrans({chr(0xFF01 + x): chr(0x21 + x) for x in range(94)}))

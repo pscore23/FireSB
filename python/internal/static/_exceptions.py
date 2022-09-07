@@ -1,9 +1,5 @@
 # -*- coding: utf-8 -*-
 
 
-class JSONNotFoundError(Exception):
-    pass
-
-
-class NotSB3Error(Exception):
+class InputError(Exception):
     pass

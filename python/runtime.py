@@ -7,8 +7,8 @@ from typing import Any
 import PySide6
 from PySide6.QtWidgets import QWidget, QPushButton, QTextEdit, QLabel, QApplication
 
-from internal import _requester
-from internal.static.assets import _style_sheets
+from python.internal import _requester
+from python.internal.static.assets import _style_sheets
 
 
 class MainWindow(QWidget):
@@ -21,19 +21,19 @@ class MainWindow(QWidget):
         self.button, self.text_edit, self.label = None, None, None
 
         self.setWindowTitle("FireSB")
-        self.resize(600, 500)
+        self.resize(800, 700)
 
-        self.set_label(150, 85)
-        self.set_button(320, 50)
-        self.set_text_edit(150, 50)
+        self.set_label(70, 85)
+        self.set_button(240, 50)
+        self.set_text_edit(70, 50)
 
     def set_label(self, x_pos: int, y_pos: int) -> None:
         self.label = QLabel(self)
 
         self.label.setStyleSheet(_style_sheets.LABEL_STYLE)
-        self.label.setText("入力待ちです...")
+        self.label.setText("\"projects.scratch.mit.edu\" などの\r\nproject.json が取得できる URL を入力してください...")
         self.label.move(x_pos, y_pos)
-        self.label.resize(250, 25)
+        self.label.resize(250, 30)
 
     def set_button(self, x_pos: int, y_pos: int) -> None:
         self.button = QPushButton(self)
@@ -56,11 +56,11 @@ class MainWindow(QWidget):
 
         _status = status
 
-        p_id = \
+        project_url = \
             self.text_edit.toPlainText().translate(str.maketrans({chr(0xFF01 + x): chr(0x21 + x) for x in range(94)}))
-        data = _requester.Require.get_project_data(p_id)
+        project_data = _requester.Require().get_project_data(project_url)
 
-        if data is None:
+        if project_data is None:
             self.label.setText("データの取得に失敗しました - 再試行してみてください")
 
         else:

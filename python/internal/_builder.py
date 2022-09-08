@@ -1,11 +1,11 @@
 from typing import Any
 import json
 
-from static import _generic
+from python.internal.static import _generic
 
 block_def = _generic._define("block_def")
-input_: type = _generic._define("input")
-field_: type = _generic._define("field")
+input_ = _generic._define("input")
+field_ = _generic._define("field")
 
 
 class BlockBuilder(_generic.GenericData):

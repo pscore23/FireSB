@@ -23,7 +23,7 @@ class Require:
             req = request.Request(project_url, headers=headers)
 
             try:
-                with request.urlopen(req) as res:
+                with request.urlopen(req) as res:  # nosec
                     return json.dumps(json.loads(res.read().decode(
                         "utf-8")), ensure_ascii=False, indent=4, sort_keys=False, separators=(",", ": "))
 

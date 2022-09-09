@@ -3,3 +3,7 @@
 
 class InputError(Exception):
     pass
+
+
+class ProtocolError(Exception):
+    pass

@@ -7,7 +7,7 @@ from urllib import error, request
 
 from python.internal.static import _exceptions
 
-headers = {
+HEADERS = {
     "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) "
                   "Chrome/91.0.4472.101 Safari/537.36 "
 }
@@ -17,7 +17,7 @@ class Require:
     @staticmethod
     def get_project_data(project_url: str) -> Any:
         if re.compile(r"<[^>]*?>").sub("", project_url).lower().startswith("https"):
-            req = request.Request(project_url, headers=headers)
+            req = request.Request(project_url, headers=HEADERS)
 
             try:
                 with request.urlopen(req) as res:  # nosec

@@ -28,4 +28,4 @@ class NameRepr(GenericData):
 
 
 def _define(name):
-    return type(name, (NameRepr,), {})
+    return type(name, (NameRepr,), dict({}))

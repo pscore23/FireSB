@@ -16,8 +16,8 @@ HEADERS = {
 class Require:
     @staticmethod
     def get_project_data(project_url: str) -> Any:
-        if re.compile(r"<[^>]*?>").sub("", project_url).lower().startswith("https"):
-            req = request.Request(project_url, headers=HEADERS)
+        if project_url.lower().startswith("https"):
+            req = request.Request(re.compile(r"<[^>]*?>").sub("", project_url), headers=HEADERS)
 
             try:
                 with request.urlopen(req) as res:  # nosec

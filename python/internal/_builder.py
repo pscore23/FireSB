@@ -1,5 +1,7 @@
-from typing import Any
+# -*- coding: utf-8 -*-
+
 import json
+from typing import Any
 
 from python.internal.static import _generic
 

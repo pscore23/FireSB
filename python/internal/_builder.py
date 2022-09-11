@@ -5,9 +5,9 @@ from typing import Any
 
 from python.internal.static import _generic
 
-block_def = _generic._define("block_def")
-input_ = _generic._define("input")
-field_ = _generic._define("field")
+BlockDef = _generic._define("BlockDef")
+Input_ = _generic._define("Input")
+Field_ = _generic._define("Field")
 
 
 class BlockBuilder(_generic.GenericData):
@@ -52,7 +52,7 @@ class BlockBuilder(_generic.GenericData):
     @property
     def proc_define(self):
         if self._mutation:
-            return block_def(
+            return BlockDef(
                 name=self.id,
                 code=self._mutation["proccode"],
                 arg_ids=json.loads(self._mutation["argumentids"]),

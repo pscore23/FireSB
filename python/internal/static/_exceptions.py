@@ -7,3 +7,11 @@ class InputError(Exception):
 
 class ProtocolError(Exception):
     pass
+
+
+class RequestError(Exception):
+    pass
+
+
+class UnknownError(Exception):
+    pass

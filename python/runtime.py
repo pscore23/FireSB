@@ -11,10 +11,12 @@ from python.internal import _requester
 from python.internal.static.assets import _style_sheets
 
 
-class MainWindow(QWidget):
+class MainProcess(QWidget):
     def __init__(self, parent: Any = None) -> None:
         os.environ["QT_QPA_PLATFORM_PLUGIN_PATH"] = \
             os.path.join(os.path.dirname(PySide6.__file__), "plugins", "platforms")
+
+        self.system = System()
 
         super().__init__(parent)
 
@@ -60,14 +62,17 @@ class MainWindow(QWidget):
             self.text_edit.toPlainText().translate(str.maketrans({chr(0xFF01 + x): chr(0x21 + x) for x in range(94)}))
         project_data = _requester.Require().get_project_data(project_url)
 
-        if project_data is None:
-            self.label.setText("データの取得に失敗しました - 再試行してみてください")
+        self.label.setText("データの取得が完了しました!")
 
-        else:
-            self.label.setText("データの取得が完了しました!")
+
+class System:
+    @staticmethod
+    def restart_process():
+        sys.stdout.flush()
+        os.execv(sys.argv[0], sys.argv)
 
 
 app = QApplication(sys.argv).instance()
-window = MainWindow()
+window = MainProcess()
 window.show()
 sys.exit(app.exec())

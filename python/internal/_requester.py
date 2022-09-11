@@ -15,9 +15,9 @@ HEADERS = {
 
 class Require:
     @staticmethod
-    def get_project_data(project_url: str) -> Any:
-        if project_url.lower().startswith("https"):
-            req = request.Request(re.compile(r"<[^>]*?>").sub("", project_url), headers=HEADERS)
+    def get_project_data(query: str) -> Any:
+        if query.lower().startswith("https"):
+            req = request.Request(re.compile(r"<[^>]*?>").sub("", query), headers=HEADERS)
 
             try:
                 with request.urlopen(req) as res:  # nosec
@@ -27,8 +27,12 @@ class Require:
             except UnicodeEncodeError:
                 raise _exceptions.InputError("URL に使用できない文字が含まれています")
 
-            except error.HTTPError:
-                raise _exceptions.InputError("指定された URL が見つかりません")
+            except error.HTTPError as e:
+                if e.code >= 400:
+                    raise _exceptions.RequestError(e.reason)
+
+                else:
+                    raise _exceptions.UnknownError("不明なエラーが発生しました")
 
         else:
             raise _exceptions.ProtocolError("\"https://\" から始まる URL を指定してください")

@@ -12,7 +12,7 @@ from python.internal.static.assets import _style_sheets
 
 
 class MainProcess(QWidget):
-    def __init__(self, parent: Any = None) -> None:
+    def __init__(self, parent: Any | None = None) -> None:
         os.environ["QT_QPA_PLATFORM_PLUGIN_PATH"] = \
             os.path.join(os.path.dirname(PySide6.__file__), "plugins", "platforms")
 

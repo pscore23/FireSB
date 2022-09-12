@@ -16,7 +16,7 @@ HEADERS = {
 class Require:
     @staticmethod
     def get_project_data(query: str) -> Any:
-        if query.lower().startswith("https"):
+        if query.lower().startswith("https://"):
             req = request.Request(re.compile(r"<[^>]*?>").sub("", query), headers=HEADERS)
 
             try:

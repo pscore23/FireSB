@@ -17,10 +17,11 @@ class MainProcess(QWidget):
             os.path.join(os.path.dirname(PySide6.__file__), "plugins", "platforms")
 
         self.system = System()
+        self.require = _requester.Require()
 
         super().__init__(parent)
 
-        self.button, self.text_edit, self.label = None, None, None
+        self.button_1, self.text_edit, self.label = None, None, None
 
         self.setWindowTitle("FireSB")
         self.resize(800, 700)
@@ -38,13 +39,13 @@ class MainProcess(QWidget):
         self.label.resize(250, 30)
 
     def set_button(self, x_pos: int, y_pos: int) -> None:
-        self.button = QPushButton(self)
+        self.button_1 = QPushButton(self)
 
-        self.button.setStyleSheet(_style_sheets.BUTTON_STYLE)
-        self.button.setText("解析する!")
-        self.button.move(x_pos, y_pos)
-        self.button.resize(75, 25)
-        self.button.clicked.connect(lambda: self.analyze(None))
+        self.button_1.setStyleSheet(_style_sheets.BUTTON_STYLE)
+        self.button_1.setText("解析する!")
+        self.button_1.move(x_pos, y_pos)
+        self.button_1.resize(75, 25)
+        self.button_1.clicked.connect(lambda: self.analyze(None))
 
     def set_text_edit(self, x_pos: int, y_pos: int) -> None:
         self.text_edit = QTextEdit(self)
@@ -54,22 +55,37 @@ class MainProcess(QWidget):
         self.text_edit.resize(150, 25)
 
     def analyze(self, status) -> None:
-        self.button.setEnabled(False)
+        self.button_1.setEnabled(False)
 
         _status = status
 
-        project_url = \
-            self.text_edit.toPlainText().translate(str.maketrans({chr(0xFF01 + x): chr(0x21 + x) for x in range(94)}))
-        project_data = _requester.Require().get_project_data(project_url)
+        try:  # TODO: この try-except 部分の処理の考案
+            project_url = \
+                self.text_edit.toPlainText().translate(str.maketrans(
+                    {chr(0xFF01 + x): chr(0x21 + x) for x in range(94)}))
+            project_data = self.require.get_project_data(project_url)
+
+        except Exception:
+            self.system.restart_process("Restarting...")
 
         self.label.setText("データの取得が完了しました!")
 
 
 class System:
     @staticmethod
-    def restart_process():
+    def restart_process(message: str) -> None:
+        sys.stderr.write(message)
         sys.stdout.flush()
-        os.execv(sys.argv[0], sys.argv)
+
+        os.execv(sys.executable, ["python"] + sys.argv)
+
+    @staticmethod
+    def exit_process(force: bool, code: int = 0) -> None:
+        if force:
+            os._exit(code)
+
+        else:
+            sys.exit(code)
 
 
 app = QApplication(sys.argv).instance()

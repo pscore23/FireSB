@@ -3,7 +3,6 @@
 import os
 import psutil
 import sys
-from typing import Any
 
 import PySide6
 from PySide6.QtWidgets import QWidget, QPushButton, QTextEdit, QLabel, QApplication
@@ -92,8 +91,9 @@ class System:
     def _cleanup():
         process = psutil.Process(os.getpid())
 
-        for handler in process.connections():
-            os.close(handler.fd)
+        for (c_handler, f_handler) in zip(process.connections(), process.open_files()):
+            os.close(c_handler.fd)
+            os.close(f_handler.fd)
 
         sys.stdout.flush()
 

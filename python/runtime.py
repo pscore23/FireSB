@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import os
+import psutil
 import sys
 from typing import Any
 
@@ -72,10 +73,10 @@ class MainProcess(QWidget):
 
 
 class System:
-    @staticmethod
-    def restart_process(message: str) -> None:
+    def restart_process(self, message: str) -> None:
         sys.stderr.write(message)
-        sys.stdout.flush()
+
+        self._cleanup()
 
         os.execv(sys.executable, ["python"] + sys.argv)
 
@@ -86,6 +87,15 @@ class System:
 
         else:
             sys.exit(code)
+
+    @staticmethod
+    def _cleanup():
+        process = psutil.Process(os.getpid())
+
+        for handler in process.connections():
+            os.close(handler.fd)
+
+        sys.stdout.flush()
 
 
 app = QApplication(sys.argv).instance()

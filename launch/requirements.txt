@@ -1,2 +1,2 @@
 psutil
-PySide6
+PySimpleGUI

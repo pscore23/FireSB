@@ -8,7 +8,7 @@ import PySide6
 from PySide6.QtWidgets import QWidget, QPushButton, QTextEdit, QLabel, QApplication
 
 from python.internal import _requester
-from python.internal.static.assets import _style_sheets
+from python.internal.static.assets import _layout
 
 
 class MainProcess(QWidget):
@@ -33,7 +33,7 @@ class MainProcess(QWidget):
     def set_label(self, x_pos: int, y_pos: int) -> None:
         self.label = QLabel(self)
 
-        self.label.setStyleSheet(_style_sheets.LABEL_STYLE)
+        self.label.setStyleSheet(_layout.LABEL_STYLE)
         self.label.setText("\"projects.scratch.mit.edu\" などの\r\nproject.json が取得できる URL を入力してください...")
         self.label.move(x_pos, y_pos)
         self.label.resize(250, 30)
@@ -41,7 +41,7 @@ class MainProcess(QWidget):
     def set_button(self, x_pos: int, y_pos: int) -> None:
         self.button_1 = QPushButton(self)
 
-        self.button_1.setStyleSheet(_style_sheets.BUTTON_STYLE)
+        self.button_1.setStyleSheet(_layout.BUTTON_STYLE)
         self.button_1.setText("解析する!")
         self.button_1.move(x_pos, y_pos)
         self.button_1.resize(75, 25)
@@ -50,7 +50,7 @@ class MainProcess(QWidget):
     def set_text_edit(self, x_pos: int, y_pos: int) -> None:
         self.text_edit = QTextEdit(self)
 
-        self.text_edit.setStyleSheet(_style_sheets.TEXT_EDIT_STYLE)
+        self.text_edit.setStyleSheet(_layout.TEXT_EDIT_STYLE)
         self.text_edit.move(x_pos, y_pos)
         self.text_edit.resize(150, 25)
 

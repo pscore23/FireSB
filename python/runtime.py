@@ -1,9 +1,10 @@
 # -*- coding: utf-8 -*-
 
+import gc
 import os
-import psutil
 import sys
 
+import psutil
 import PySide6
 from PySide6.QtWidgets import QWidget, QPushButton, QTextEdit, QLabel, QApplication
 
@@ -88,12 +89,26 @@ class System:
             sys.exit(code)
 
     @staticmethod
-    def _cleanup():
+    def _cleanup() -> None:
         process = psutil.Process(os.getpid())
 
-        for (c_handler, f_handler) in zip(process.connections(), process.open_files()):
-            os.close(c_handler.fd)
-            os.close(f_handler.fd)
+        try:
+            if len(process.connections()) == len(process.open_files()):
+                for (c_handler, f_handler) in zip(process.connections(), process.open_files()):
+                    os.close(c_handler.fd)
+                    os.close(f_handler.fd)
+
+            else:
+                for c_handler in process.connections():
+                    os.close(c_handler.fd)
+
+                for f_handler in process.open_files():
+                    os.close(f_handler.fd)
+
+        except OSError:
+            pass
+
+        gc.collect()
 
         sys.stdout.flush()
 
